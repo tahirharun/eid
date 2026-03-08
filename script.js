@@ -4,7 +4,7 @@ const shareOptions = document.getElementById('shareOptions');
 const nasheedBtn = document.getElementById('nasheedBtn');
 shareBtn.addEventListener('click', (e) => {
     const rect = shareBtn.getBoundingClientRect();
-    createConfetti(rect.left + rect.width/2, rect.top + rect.height/2); // Confetti burst
+    createConfetti(rect.left + rect.width/2, rect.top + rect.height/2);
     shareOptions.style.display = shareOptions.style.display === 'flex' ? 'none' : 'flex';
 });
 function shareTo(platform) {
