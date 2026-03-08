@@ -2,7 +2,9 @@ const EID_MESSAGE = "Eid Mubarak! Wishing you joy, peace, and happiness on this 
 const shareBtn = document.getElementById('shareBtn');
 const shareOptions = document.getElementById('shareOptions');
 const nasheedBtn = document.getElementById('nasheedBtn');
-shareBtn.addEventListener('click', () => {
+shareBtn.addEventListener('click', (e) => {
+    const rect = shareBtn.getBoundingClientRect();
+    createConfetti(rect.left + rect.width/2, rect.top + rect.height/2); // Confetti burst
     shareOptions.style.display = shareOptions.style.display === 'flex' ? 'none' : 'flex';
 });
 function shareTo(platform) {
@@ -26,7 +28,6 @@ shareOptions.querySelectorAll('button').forEach(btn => {
 });
 const nasheedAudio = new Audio('nasheed.mp3');
 let isPlaying = false;
-
 nasheedBtn.addEventListener('click', () => {
     if(!isPlaying){
         nasheedAudio.play();
@@ -45,8 +46,7 @@ function createStars(count = 50){
         const star = document.createElement('div');
         star.classList.add('star');
         const size = Math.random()*4 + 2;
-        star.style.width = size + 'px';
-        star.style.height = size + 'px';
+        star.style.width = star.style.height = size + 'px';
         star.style.top = Math.random()*window.innerHeight + 'px';
         star.style.left = Math.random()*window.innerWidth + 'px';
         star.style.animationDuration = (Math.random()*2 + 1) + 's';
@@ -75,12 +75,10 @@ setInterval(()=>{
 },2000);
 const lanternCount = 15;
 const lanterns = [];
-
 for(let i=0; i<lanternCount; i++){
     const lantern = document.createElement('div');
     lantern.classList.add('lantern');
     document.body.appendChild(lantern);
-
     lantern.x = Math.random() * (window.innerWidth - 50);
     lantern.y = -Math.random() * window.innerHeight;
     lantern.speed = 50 + Math.random() * 50;
@@ -91,7 +89,7 @@ for(let i=0; i<lanternCount; i++){
 }
 let lastTime = performance.now();
 function animateLanterns(time){
-    const delta = (time - lastTime) / 1000;
+    const delta = (time - lastTime)/1000;
     lastTime = time;
     lanterns.forEach(lantern => {
         lantern.y += lantern.speed * delta;
@@ -100,12 +98,24 @@ function animateLanterns(time){
             lantern.x = Math.random() * (window.innerWidth - 50);
             lantern.swayPhase = Math.random() * Math.PI * 2;
         }
-        const swayOffset = Math.sin(time / 1000 * lantern.swaySpeed + lantern.swayPhase) * lantern.swayAmplitude;
-
+        const swayOffset = Math.sin(time/1000 * lantern.swaySpeed + lantern.swayPhase) * lantern.swayAmplitude;
         lantern.style.top = lantern.y + 'px';
-        lantern.style.left = (lantern.x + swayOffset) + 'px'
+        lantern.style.left = (lantern.x + swayOffset) + 'px';
         lantern.style.boxShadow = `0 0 ${10 + Math.sin(time/200)*10}px #ffeb3b`;
     });
     requestAnimationFrame(animateLanterns);
 }
 requestAnimationFrame(animateLanterns);
+function createConfetti(x, y){
+    for(let i=0;i<30;i++){
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = x + 'px';
+        confetti.style.top = y + 'px';
+        confetti.style.backgroundColor = `hsl(${Math.random()*360},100%,50%)`;
+        const size = Math.random() * 8 + 4;
+        confetti.style.width = confetti.style.height = size + 'px';
+        document.body.appendChild(confetti);
+        setTimeout(()=>confetti.remove(),1000);
+    }
+}
