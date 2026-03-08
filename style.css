@@ -1,5 +1,5 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,13 +14,23 @@ body {
     right: 50px;
     width: 120px;
     height: 120px;
-    background: radial-gradient(circle at 40% 40%, #fff 60%, transparent 70%);
+    background: #ffffff;
     border-radius: 50%;
-    box-shadow: 0 0 40px rgba(255,255,255,0.4);
+    box-shadow: 0 0 35px rgba(255,255,255,0.6);
     z-index: 0;
 }
+.moon::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 35px;
+    width: 130px;
+    height: 130px;
+    background: linear-gradient(to top, #1e3c72, #2a5298);
+    border-radius: 50%;
+}
 .card {
-    background: rgba(255,255,255,0.95);
+    background: rgba(255,255,255,0.9);
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     padding: 50px 40px;
@@ -60,7 +70,6 @@ button {
 button:hover {
     background: #ff2e2e;
 }
-
 .nasheed-playing {
     animation: glowPulse 1s infinite alternate;
 }
@@ -114,6 +123,12 @@ button:hover {
         top: 30px;
         right: 20px;
     }
+    .moon::after {
+        width: 90px;
+        height: 90px;
+        left: 25px;
+    }
+
     .card {
         animation: none;
         width: 90%;
