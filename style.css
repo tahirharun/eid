@@ -1,67 +1,68 @@
-body {
+body{
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background: linear-gradient(to top, #1e3c72, #2a5298),
-                url('https://i.ibb.co/9GZz9yj/islamic-pattern.png') repeat;
-    background-size: 200px;
-    overflow: hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+    overflow:hidden;
+    background:linear-gradient(to top,#1e3c72,#2a5298),
+    url('https://i.ibb.co/9GZz9yj/islamic-pattern.png') repeat;
+    background-size:200px;
 }
 
 /* Moon */
-.moon {
-    position: fixed;
-    top: 50px;
-    right: 50px;
-    width: 120px;
-    height: 120px;
-    background: radial-gradient(circle at 30% 30%, #fff, #f0f0f0 70%);
-    border-radius: 50%;
-    box-shadow: 0 0 35px rgba(255,255,255,0.6);
-    z-index: 0;
-    transform: translateZ(0);
+
+.moon{
+    position:fixed;
+    top:50px;
+    right:50px;
+    width:120px;
+    height:120px;
+    background:radial-gradient(circle at 30% 30%,#fff,#f0f0f0 70%);
+    border-radius:50%;
+    box-shadow:0 0 35px rgba(255,255,255,0.6);
+    z-index:10;
 }
 
-.moon::after {
+.moon::after{
     content:"";
     position:absolute;
     top:0;
     left:30%;
     width:100%;
     height:100%;
-    background:linear-gradient(to top, #1e3c72, #2a5298);
+    background:linear-gradient(to top,#1e3c72,#2a5298);
     border-radius:50%;
 }
 
 /* Card */
-.card {
-    background: rgba(255,255,255,0.9);
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    padding: 50px 40px;
-    text-align: center;
-    width: 350px;
-    position: relative;
-    z-index: 5;
-    animation: float 3s ease-in-out infinite;
+
+.card{
+    background:rgba(255,255,255,0.9);
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    padding:50px 40px;
+    text-align:center;
+    width:350px;
+    position:relative;
+    z-index:5;
+    animation:float 3s ease-in-out infinite;
 }
 
-@keyframes float {
+@keyframes float{
     0%,100%{transform:translateY(0);}
     50%{transform:translateY(-10px);}
 }
 
-h1 {
+h1{
     color:#ffeb3b;
     margin-bottom:10px;
     font-size:32px;
     text-shadow:1px 1px 5px #000;
 }
 
-p {
+p{
     color:#fff;
     font-size:16px;
     margin-bottom:20px;
@@ -69,7 +70,8 @@ p {
 }
 
 /* Buttons */
-button {
+
+button{
     background:#ff5e62;
     border:none;
     color:white;
@@ -81,43 +83,47 @@ button {
     margin:5px 0;
 }
 
-button:hover {
+button:hover{
     background:#ff2e2e;
 }
 
 /* Nasheed glow */
-.nasheed-playing {
-    animation: glowPulse 1s infinite alternate;
+
+.nasheed-playing{
+    animation:glowPulse 1s infinite alternate;
 }
 
-@keyframes glowPulse {
+@keyframes glowPulse{
     0%{box-shadow:0 0 5px #ffeb3b,0 0 10px #ffeb3b;}
     50%{box-shadow:0 0 15px #ffeb3b,0 0 25px #ffeb3b;}
     100%{box-shadow:0 0 5px #ffeb3b,0 0 10px #ffeb3b;}
 }
 
 /* Share options */
-.share-options {
+
+.share-options{
     display:none;
     margin-top:15px;
-    flex-direction: column;
+    flex-direction:column;
 }
 
 /* Stars */
-.star {
+
+.star{
     position:absolute;
     background:#fff;
     border-radius:50%;
     animation:twinkle 2s infinite alternate;
 }
 
-@keyframes twinkle {
+@keyframes twinkle{
     0%{opacity:0.3;}
     100%{opacity:1;}
 }
 
 /* Fireworks */
-.firework {
+
+.firework{
     position:absolute;
     width:4px;
     height:4px;
@@ -127,53 +133,56 @@ button:hover {
     animation:explode 1s ease-out forwards;
 }
 
-@keyframes explode {
-    0%{transform:scale(1); opacity:1;}
-    100%{transform:scale(10) translate(var(--x),var(--y)); opacity:0;}
+@keyframes explode{
+    0%{transform:scale(1);opacity:1;}
+    100%{transform:scale(10) translate(var(--x),var(--y));opacity:0;}
 }
 
 /* Lanterns */
-.lantern {
+
+.lantern{
     position:absolute;
     width:40px;
     height:60px;
     background:radial-gradient(circle at 50% 20%,#ffeb3b 50%,#ff9800 90%);
     border-radius:50% 50% 10% 10%;
     box-shadow:0 0 15px #ffeb3b;
-    z-index:2;
+    z-index:1;
     pointer-events:none;
 }
 
 /* Confetti */
-.confetti {
+
+.confetti{
     position:absolute;
     pointer-events:none;
     border-radius:50%;
     animation:confetti-fall 1s linear forwards;
 }
 
-@keyframes confetti-fall {
-    0%{transform:translateY(0) rotate(0deg); opacity:1;}
-    100%{transform:translateY(100px) rotate(360deg); opacity:0;}
+@keyframes confetti-fall{
+    0%{transform:translateY(0) rotate(0deg);opacity:1;}
+    100%{transform:translateY(100px) rotate(360deg);opacity:0;}
 }
 
-/* Mobile Fix */
+/* Mobile */
+
 @media(max-width:768px){
 
-    .moon {
+    .moon{
         width:80px;
         height:80px;
         top:30px;
         right:20px;
     }
 
-    .moon::after {
+    .moon::after{
         width:100%;
         height:100%;
         left:25%;
     }
 
-    .card {
+    .card{
         animation:none;
         width:90%;
         padding:30px 20px;
